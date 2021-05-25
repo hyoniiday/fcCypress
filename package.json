@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "chromedriver": "^88.0.0",
+    "cypress-parallel": "^0.3.0",
+    "fs-extra": "^9.1.0",
+    "path": "^0.12.7",
+    "selenium-webdriver": "^4.0.0-beta.3"
+  },
+  "devDependencies": {
+    "cucumber": "^6.0.5",
+    "cypress": "^7.3.0",
+    "cypress-multi-reporters": "^1.5.0",
+    "mocha": "^8.3.2",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/cucumber-js",
+    "cleanup": "rm -fr ./cypress/reports ./cypress/videos ./cypress/screenshots ",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:firefox": "cypress run --browser firefox",
+    "cy:run:ci": "cypress run --headless --browser chrome --record --key d3951f74-3293-45e2-b719-d176ea2982f1 --env configFile=qa --tag=qa",
+    "cy:parallel": "cypress-parallel -s cy:run:ci -t 4 -d cypress/integration"
+  }
+}
